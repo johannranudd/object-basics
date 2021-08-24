@@ -278,6 +278,33 @@
 // })
 // ****
 
+// const nameInput = document.querySelector('#name');
+// const amountInput = document.querySelector('#amount');
+// const depositBtn = document.querySelector('.deposit-btn');
+// const result = document.querySelector('.result');
+
+// let myBalance = 0;
+
+// function balanceFn() {
+//   const name = nameInput.value;
+//   let deposit = parseInt(amountInput.value);
+//   let newBalance = deposit + myBalance;
+//   const resultText = `name: ${name}
+//   initial balance: ${myBalance}
+//   deposit: ${deposit}
+//   new balance: ${newBalance}`;
+  
+//   // deposit = parseInt(amountInput.value);
+
+//   result.textContent = resultText;
+//   myBalance = newBalance;
+// }
+
+
+// depositBtn.addEventListener("click", balanceFn)
+
+// ****
+
 const nameInput = document.querySelector('#name');
 const amountInput = document.querySelector('#amount');
 const depositBtn = document.querySelector('.deposit-btn');
@@ -285,21 +312,30 @@ const result = document.querySelector('.result');
 
 let myBalance = 0;
 
-function balanceFn() {
-  const name = nameInput.value;
-  let deposit = parseInt(amountInput.value);
-  let newBalance = deposit + myBalance;
-  const resultText = `name: ${name}
-  initial balance: ${myBalance}
-  deposit: ${deposit}
-  new balance: ${newBalance}`;
-  
-  // deposit = parseInt(amountInput.value);
-
-  result.textContent = resultText;
-  myBalance = newBalance;
+function balanceFn(name, deposit) {
+  this.name = name;
+  this.deposit = deposit;
+  this.newBalance =  myBalance + parseInt(deposit);
+  this.checking = function() {
+    if (isNaN(this.deposit)) {
+      return `enter a value`;
+    } else {
+      return `Hello ${this.name}, your initial balance was ${myBalance}
+      and is now ${this.newBalance} after depositing ${this.deposit}`;
+    }
+    
+  }
 }
 
-
-depositBtn.addEventListener("click", balanceFn)
-
+depositBtn.addEventListener("click", function() {
+  const account = new balanceFn(nameInput.value, amountInput.value);
+  result.textContent = account.checking();
+  myBalance = account.newBalance;
+  // if (account.newBalance === isNaN) {
+  //   // console.log('not a number');
+  //   console.log(account.newBalance);
+  // } else {
+  //   // console.log('is a number');
+  //   console.log(account.newBalance);
+  // }
+})
