@@ -54,3 +54,46 @@
 
 // !END TEST
 
+
+// const john = {
+//   name: 'john',
+//   age: 24,
+// }
+// const susan = {
+//   name: 'susan',
+//   age: 25,
+// }
+
+const people = {
+  john: {
+    name: 'john',
+    age: 34,
+    ocupation: 'developer',
+  },
+  susan: {
+    name: 'susan',
+    age: 24,
+    ocupation: 'designer',
+  },
+  bob: {
+    name: 'bob',
+    age: 22,
+    ocupation: 'salesman',
+  },
+}
+
+// function greetFn(item) {
+//   const newPeople = 
+// }
+// function greet() {
+//   // console.log(this);
+//     console.log(`hello ${this.name} you are ${this.age} 
+//     years old ocupation is ${this.ocupation}`);
+  
+// }
+
+// // console.log(people.john.ocupation);
+// greet.call(people.john);
+
+// greet.call(john);
+// greet.call(susan);
