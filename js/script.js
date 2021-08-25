@@ -231,7 +231,6 @@
 // john.deposit(100);
 // bob.deposit(300);
 
-
 // ****
 // function Account(name, initialBalance) {
 //   this.name = name;
@@ -257,7 +256,6 @@
 // const amountInput = document.querySelector('#amount');
 // const depositBtn = document.querySelector('.deposit-btn');
 // const result = document.querySelector('.result');
-
 
 // function checkAccount(name, initialBalance) {
 //   this.name = name;
@@ -293,49 +291,75 @@
 //   initial balance: ${myBalance}
 //   deposit: ${deposit}
 //   new balance: ${newBalance}`;
-  
+
 //   // deposit = parseInt(amountInput.value);
 
 //   result.textContent = resultText;
 //   myBalance = newBalance;
 // }
 
-
 // depositBtn.addEventListener("click", balanceFn)
 
 // ****
+// ! using html inputs and prototype
+// const nameInput = document.querySelector("#name");
+// const amountInput = document.querySelector("#amount");
+// const depositBtn = document.querySelector(".deposit-btn");
+// const result = document.querySelector(".result");
 
-const nameInput = document.querySelector('#name');
-const amountInput = document.querySelector('#amount');
-const depositBtn = document.querySelector('.deposit-btn');
-const result = document.querySelector('.result');
+// let myBalance = 0;
+
+// function balanceFn(name, deposit) {
+//   this.name = name;
+//   this.deposit = deposit;
+//   this.newBalance = myBalance + parseInt(deposit);
+// }
+
+// balanceFn.prototype.checking = function () {
+//   return `Hello ${this.name}, your initial balance was ${myBalance}
+//     and is now ${this.newBalance} after depositing ${this.deposit}`;
+// };
+
+// depositBtn.addEventListener("click", function () {
+//   const account = new balanceFn(nameInput.value, amountInput.value);
+//   result.textContent = account.checking();
+//   myBalance = account.newBalance;
+// });
+
+// ! END using html inputs and prototype
+// ! new Test
+
+const nameInput = document.querySelector("#name");
+const amountInput = document.querySelector("#amount");
+const depositBtn = document.querySelector(".deposit-btn");
+const result = document.querySelector(".result");
 
 let myBalance = 0;
 
-function balanceFn(name, deposit) {
+function Account(name, initialBalance) {
   this.name = name;
-  this.deposit = deposit;
-  this.newBalance =  myBalance + parseInt(deposit);
-  this.checking = function() {
-    if (isNaN(this.deposit)) {
-      return `enter a value`;
-    } else {
-      return `Hello ${this.name}, your initial balance was ${myBalance}
-      and is now ${this.newBalance} after depositing ${this.deposit}`;
-    }
-    
-  }
+  this.balance = initialBalance;
+  this.deposit = function (amount) {
+    this.balance += amount;
+    // console.log(`hello ${this.name} you initial balance is ${initialBalance}
+    // and your new balance is ${this.balance}`);
+    return `hello ${this.name} you initial balance is ${initialBalance}
+    and your new balance is ${this.balance} after depositin ${amount}`;
+  };
 }
 
-depositBtn.addEventListener("click", function() {
-  const account = new balanceFn(nameInput.value, amountInput.value);
-  result.textContent = account.checking();
-  myBalance = account.newBalance;
-  // if (account.newBalance === isNaN) {
-  //   // console.log('not a number');
-  //   console.log(account.newBalance);
-  // } else {
-  //   // console.log('is a number');
-  //   console.log(account.newBalance);
-  // }
-})
+
+
+depositBtn.addEventListener("click", function () {
+  const john = new Account(nameInput.value, myBalance);
+  let depositValue = parseInt(amountInput.value);
+  if (isNaN(depositValue)) {
+    result.textContent = 'please enter a value';
+    return;
+  } else {
+    result.textContent = john.deposit(depositValue);
+  }
+  
+  myBalance += depositValue;
+});
+// ! END new Test
