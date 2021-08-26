@@ -168,13 +168,13 @@
 const counter = {
   count: 0,
   increment(){
-    // console.log(this);
+    console.log(this);
     this.count++;
     console.log(this.count);
   }
 }
 const btn = document.querySelector('.increment');
-btn.addEventListener("click", counter.increment)
+btn.addEventListener("click", counter.increment); 
 
 // const inc = counter.increment.bind();
 
