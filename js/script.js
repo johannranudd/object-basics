@@ -165,21 +165,41 @@
 
 // !button example
 
-const counter = {
-  count: 0,
-  increment() {
-    // console.log(this);
-    this.count++;
-    console.log(this.count);
-    if (this.count >= 3) {
-      btn.removeEventListener("click", increment)
-    }
-  },
-};
-const btn = document.querySelector(".increment");
-// btn.addEventListener("click", counter.increment.bind(counter));
+// const counter = {
+//   count: 0,
+//   increment() {
+//     // console.log(this);
+//     this.count++;
+//     console.log(this.count);
+//     if (this.count >= 10) {
+//       btn.removeEventListener("click", increment)
+//     }
+//   },
+// };
+// const btn = document.querySelector(".increment");
 
-const increment = counter.increment.bind(counter);
+// // btn.addEventListener("click", counter.increment.bind(counter));
 
-btn.addEventListener("click", increment);
+// const increment = counter.increment.bind(counter);
 
+// btn.addEventListener("click", increment);
+
+// !test
+
+
+// const counter = {
+//   count: 0,
+//   increment() {
+//     this.count++;
+//     console.log(this.count);
+//     if (this.count >= 10) {
+//       btn.removeEventListener("click", increment);
+//     }
+//   },
+// };
+
+// const btn = document.querySelector(".increment");
+
+// const increment = counter.increment.bind(counter);
+
+// btn.addEventListener("click", increment);
